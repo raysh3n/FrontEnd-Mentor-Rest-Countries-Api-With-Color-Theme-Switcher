@@ -16,7 +16,7 @@ export default function App() {
     console.log(`darkTheme is ${darkTheme}`)
   }
 
-  useEffect(() => { document.documentElement.classList.toggle("dark") }, [darkTheme])
+  useEffect(() => { document.documentElement.classList[darkTheme?"add":"remove"]("dark")}, [darkTheme])
   {/*selects the html tag itself */ }
   
   return <ThemeContext.Provider value={{ darkTheme, toggleTheme }}>
