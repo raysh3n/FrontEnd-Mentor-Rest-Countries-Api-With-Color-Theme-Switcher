@@ -21,7 +21,7 @@ export default function App() {
   
   return <ThemeContext.Provider value={{ darkTheme, toggleTheme }}>
 
-   <div className="bg-[hsl(0,0%,99%)] dark:bg-[hsl(207,26%,17%)] min-h-screen"> 
+   <div className="bg-[hsl(0,0%,99%)] dark:bg-[hsl(207,26%,17%)] min-h-screen transition-color duration-100"> 
       <Navbar selected={selected} setSelected={setSelected} search={search} setSearch={setSearch}/> 
     <Routes>
       <Route path="/" element={

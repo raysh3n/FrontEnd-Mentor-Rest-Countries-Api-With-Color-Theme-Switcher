@@ -10,7 +10,7 @@ export default function Navbar({ setSearch, search, setSelected, selected }) {
     setSelected("Filter by Region");
   }
   return (
-    <div className="bg-white shadow-[0_1px_2px_0px_rgba(60,64,67,0.3),0_1px_3px_1px_rgba(60,64,67,0.15)] dark:bg-[hsl(209,23%,22%)]">
+    <div className="bg-white shadow-[0_1px_2px_0px_rgba(60,64,67,0.3),0_1px_3px_1px_rgba(60,64,67,0.15)] dark:bg-[hsl(209,23%,22%)] transition-color duration-100">
       <div className="container mx-auto flex justify-between px-4 py-6">
         {" "}
         {/* border here*/}
@@ -24,7 +24,7 @@ export default function Navbar({ setSearch, search, setSelected, selected }) {
           className="flex items-center gap-2 font-semibold"
         >
           {darkTheme === false ? (
-            <ion-icon key="outline" name="moon-outline"></ion-icon>
+            <ion-icon key="outline" name="moon-outline" className="[--ionicon-stroke-width:45px]"></ion-icon>
           ) : (
             <ion-icon
               name="moon"

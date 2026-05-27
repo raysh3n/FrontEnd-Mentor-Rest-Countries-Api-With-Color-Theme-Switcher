@@ -97,7 +97,7 @@ export default function CountryDetail() {
   // console.log([][0]); //undefined
 
   return (
-    <div className="container mx-auto px-4 py-6 dark:text-white">
+    <div className="container mx-auto px-4 py-6 dark:text-white transition-color duration-100">
       <button
         onClick={() => {
           navigate(-1);
