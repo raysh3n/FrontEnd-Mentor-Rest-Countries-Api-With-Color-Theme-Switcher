@@ -52,7 +52,7 @@ export default function CardList({selected,setSelected, search, setSearch}) {
 }
   
   return (
-    <div className="container mx-auto py-6 px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-16 transition-colors duration-300" > {/* border here*/}
+    <div className="container mx-auto py-6 px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 xl:gap-16 transition-colors duration-300" > {/* border here*/}
 
       { renderCards()  }
 
