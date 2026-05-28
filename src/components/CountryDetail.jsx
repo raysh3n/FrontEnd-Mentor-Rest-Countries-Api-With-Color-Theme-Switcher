@@ -21,6 +21,7 @@ export default function CountryDetail() {
       .then((data) => {
         setCountry(data[0]); //only the next render, the country value will be updated. It's not now, it will be the next render.
         setBorderState("done");
+       if (data[0].borders) setBordersState("fetching");
         return data[0].borders;
       })
       .then((data) => {
@@ -32,7 +33,8 @@ export default function CountryDetail() {
             // throw new Error('border fail')
           })
             .then(
-              (data) => {
+              (data) => {                
+                
                 setBorderCountries(data);
                 setBordersState("done");
               }, //setBorderCountries(data.map(c => c.cca3))
@@ -97,7 +99,7 @@ export default function CountryDetail() {
   // console.log([][0]); //undefined
 
   return (
-    <div className="container mx-auto px-4 py-6 dark:text-white transition-color duration-100">
+    <div className="container mx-auto px-4 py-6 dark:text-white transition-colors duration-300">
       <button
         onClick={() => {
           navigate(-1);
@@ -194,10 +196,11 @@ export default function CountryDetail() {
               <div className="flex flex-wrap gap-[0.5rem] dark:text-white">
                     {
                       bordersState === "border fail" ? <div className="pt-2 font-light">Failed to load borders</div> : (
-                        
+                  
                   country && //prevent render N/A first
-                  (borderCountries.length === 0 && borderState === "done" ? (
-                    <div className="pt-2 font-light">N/A</div>
+                        (borderCountries.length === 0 && borderState === "done" ? (
+                          bordersState === "fetching" ? <div className="pt-2 font-light">Loading...</div> :
+                          <div className="pt-2 font-light">N/A</div>
                   ) : (
                     borderCountries.map((country) => {
                       return (
@@ -219,7 +222,7 @@ export default function CountryDetail() {
           </div>
         </div>
       ) : (
-        <div>Loading Please Wait...</div>
+              <div className="dark:text-white">Loading Please Wait...</div>
       ))}
     </div>
   );

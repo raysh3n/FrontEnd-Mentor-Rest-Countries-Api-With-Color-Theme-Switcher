@@ -38,7 +38,7 @@ export default function CardList({selected,setSelected, search, setSearch}) {
   )
 
   return (
-    <div className="container mx-auto py-6 px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-16 transition-color duration-100" > {/* border here*/}
+    <div className="container mx-auto py-6 px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-16 transition-colors duration-300" > {/* border here*/}
 
       {
      loadState==="error"?  <div>Failed to load</div> : (
@@ -47,7 +47,7 @@ export default function CardList({selected,setSelected, search, setSearch}) {
         visible.map((country) => {
         return  <Card key={country.name.common} country={country} />
      })
-    ) :<div>Loading... Please Wait.</div>
+    ) :<div className="dark:text-white">Loading... Please Wait.</div>
  )
     }
 
