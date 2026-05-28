@@ -22,6 +22,10 @@ export default function CardList({selected,setSelected, search, setSearch}) {
       ).catch(err=>setLoadState("error"));
     },[]
   );
+
+
+
+  
  //in the filter func, impl the search filter here
 // const visible =( selected=== 'Filter by Region' || selected==='All')? countries : countries.filter(c=>c.region===selected)
   const visible = countries.filter(
@@ -37,19 +41,20 @@ export default function CardList({selected,setSelected, search, setSearch}) {
    }
   )
 
+
+
+  function renderCards() {
+  if( loadState==="error")  return   <div className="py-6">Failed to load</div>
+  if(loadState === "done") return  visible.map((country) => {
+  return  <Card key={country.name.common} country={country} />
+})
+  return <div className="dark:text-white">Loading... Please Wait.</div> 
+}
+  
   return (
     <div className="container mx-auto py-6 px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-16 transition-colors duration-300" > {/* border here*/}
 
-      {
-     loadState==="error"?  <div>Failed to load</div> : (
-        loadState === "done" ? (
-        
-        visible.map((country) => {
-        return  <Card key={country.name.common} country={country} />
-     })
-    ) :<div className="dark:text-white">Loading... Please Wait.</div>
- )
-    }
+      { renderCards()  }
 
     </div>
  )
