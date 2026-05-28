@@ -205,7 +205,7 @@ export default function CountryDetail() {
                     borderCountries.map((country) => {
                       return (
                         <Link
-                          to={`/${country.cca3}`}
+                          to={`/${country.cca3}`} key={country.cca3}
                           className="px-2 py-2 shadow-[rgba(0,0,0,0.16)_0px_1px_4px] bg-white dark:bg-[hsl(209,23%,22%)] dark:text-white"
                         >
                           <span className="font-light">{country.name.common}</span>
