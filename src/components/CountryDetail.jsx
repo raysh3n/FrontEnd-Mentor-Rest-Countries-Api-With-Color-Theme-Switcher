@@ -36,13 +36,14 @@ export default function CountryDetail() {
               (data) => {                
                 
                 setBorderCountries(data);
-                setBordersState("done");
+                  setBordersState("done");
+                // setBordersState("done");
               }, //setBorderCountries(data.map(c => c.cca3))
             )
-        //     .then(() => {
-        //       setBorderState("done");
-        //       console.log(`array is ${borderCountries}`);
-        //     });
+            // .then(() => {
+            //   setBordersState("done");
+            //   console.log(`array is ${borderCountries}`);
+            // });
         }
         else {
           // setBorderState("done");
@@ -98,6 +99,25 @@ export default function CountryDetail() {
   // console.log('hi')
   // console.log([][0]); //undefined
 
+
+
+  function renderBorders() {
+    if (bordersState === "border fail") return <div className="pt-2 font-light">Failed to load borders</div>;
+    if (bordersState === "fetching") return <div className="pt-2 font-light">Loading...</div>;
+    if (borderCountries.length === 0) return <div className="pt-2 font-light">N/A</div>;
+    return borderCountries.map((country) => {
+      return (
+        <Link
+          to={`/${country.cca3}`} key={country.cca3}
+          className="px-2 py-2 shadow-[rgba(0,0,0,0.16)_0px_1px_4px] bg-white dark:bg-[hsl(209,23%,22%)] dark:text-white"
+        >
+          <span className="font-light">{country.name.common}</span>
+        </Link>
+      );
+    }); 
+    }         
+  
+  
   return (
     <div className="container mx-auto px-4 py-6 dark:text-white transition-colors duration-300">
       <button
@@ -194,14 +214,17 @@ export default function CountryDetail() {
               </span>
 
               <div className="flex flex-wrap gap-[0.5rem] dark:text-white">
-                    {
+                {country && renderBorders()}
+                    {/* {
                       bordersState === "border fail" ? <div className="pt-2 font-light">Failed to load borders</div> : (
                   
                   country && //prevent render N/A first
-                        (borderCountries.length === 0 && borderState === "done" ? (
+                        (borderCountries.length === 0 && borderState === "done"  ? (
                           bordersState === "fetching" ? <div className="pt-2 font-light">Loading...</div> :
                           <div className="pt-2 font-light">N/A</div>
                   ) : (
+                    bordersState==="fetching"? <div className="pt-2 font-light">Loading...</div> :(
+                            
                     borderCountries.map((country) => {
                       return (
                         <Link
@@ -211,12 +234,12 @@ export default function CountryDetail() {
                           <span className="font-light">{country.name.common}</span>
                         </Link>
                       );
-                    })
+                    }))
                   )))
                   // :<div className="pt-2">N/A</div>
 
                       
-                }
+                }*/}
               </div>
             </div>
           </div>
